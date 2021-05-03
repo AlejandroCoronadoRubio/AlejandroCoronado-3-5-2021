@@ -1,0 +1,50 @@
+﻿@model IEnumerable<BertoniMiniProject.Models.Album>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+<div class="text-center">
+    <h1 class="display-4">Bertoni Mini Project</h1>
+    <p>Learn more in <a href="https://github.com/AlejandroCoronadoRubio" target="_blank">https://github.com/AlejandroCoronadoRubio</a>.</p>
+
+    <div id="albums">
+
+        @foreach (var album in Model)
+        {
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@album.Id -  @album.Title</h5>
+                    <a asp-controller="Photo" asp-action="Index" asp-route-id="@album.Id" class="btn btn-primary">Visualizar album</a>
+                </div>
+            </div>
+            <br>
+        }
+    </div>
+</div>
+
+@*<script>
+
+    fetch('https://jsonplaceholder.typicode.com/albums', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+            },
+    })
+    .then(response => response.json())
+    .catch(error => console.log(error))
+    .then(response => {
+
+        const albumsDiv = document.getElementById('albums')
+
+        response.forEach(album => {
+            let newDiv = document.createElement('div')
+            newDiv.textContent = `${album.userId} ${album.id} ${album.title}`
+            albumsDiv.appendChild(newDiv)
+        })
+    })
+        
+    </script>*@

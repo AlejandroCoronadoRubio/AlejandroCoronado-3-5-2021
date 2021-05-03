@@ -1,0 +1,27 @@
+﻿@model IEnumerable<BertoniMiniProject.Models.Photo>
+
+@{
+    ViewData["Title"] = "Photos";
+}
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Thumbnail</th>
+            <th scope="col">Ver comentarios</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var photo in Model)
+        {
+        <tr>
+            <th scope="row">@photo.Id</th>
+            <td>@photo.Title</td>
+            <td><a target="_blank" href="@photo.Url"><img src="@photo.ThumbnailUrl" alt="@photo.Title" /></a></td>
+            <td><a asp-controller="Comment" asp-actions="Index" asp-route-id="@photo.Id">Ver Comentarios</a></td>
+        </tr>
+        }
+    </tbody>
+</table>
